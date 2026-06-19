@@ -1,0 +1,16 @@
+ARTISTI
+Esercizio 1: Costruzione del Grafo
+L'utente seleziona un paese (Country) di residenza dei clienti dal menù a tendina.
+Costruzione: Crea un grafo NON orientato e pesato.
+-	Vertici: Gli album (Album) acquistati da almeno un cliente residente nel paese selezionato.
+-	Archi: Esiste un arco tra due album se entrambi sono stati acquistati dallo stesso cliente (all'interno di una o più fatture).
+-	Peso: Il peso dell'arco è pari al numero totale di brani (Quantity sommata dalla tabella invoiceline) degli album in comune acquistati dai clienti di quel paese.
+Output: Dopo la creazione, visualizza:
+-	Numero di vertici e numero di archi.
+-	I 5 archi con il peso maggiore.
+-	La densità del grafo (definita come rapporto tra numero di archi e numero massimo possibile di archi tra i vertici presenti).
+Esercizio 2: Analisi dei Percorsi
+Utilizzando il grafo costruito nell'Esercizio 1:
+-  Analisi: Seleziona due album (nodo di partenza e nodo di arrivo) tra quelli presenti nel grafo.
+Percorso: Trova il cammino tra i due album che minimizza la somma dei pesi degli archi (Algoritmo di Dijkstra).
+-	Vincolo: Trova il cammino più lungo (massimo numero di archi) tra i due album, ignorando i pesi, ma visitando esclusivamente archi che hanno un peso superiore a una soglia definita dall'utente.
