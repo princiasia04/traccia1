@@ -24,12 +24,12 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
 
-        self._ddPaese = ft.Dropdown(label="Anno", width=250, on_change=self._controller.handlePaeseSelection)
+        self._ddPaese = ft.Dropdown(label="Paese", width=250, on_change=self._controller.handlePaeseSelection)
         self._controller.fillDDPaese()
         self._btnCreaGrafo = ft.ElevatedButton(text="Crea Grafo",
                                                on_click=self._controller.handleCreaGrafo, width=250)
 
-        row1 = ft.Row([self._ddGenre, self._btnCreaGrafo],
+        row1 = ft.Row([self._ddPaese, self._btnCreaGrafo],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 

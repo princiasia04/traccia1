@@ -22,46 +22,45 @@ class DAO():
         return result
 
     @staticmethod
-    def getArtisti(genere):
+    def getAlbum(paese):
         conn = DBConnect.get_connection()
 
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """SELECT DISTINCT a.Name as nomiArtisti
-                    FROM Genre g
-                    JOIN Track t ON t.GenreId = g.GenreId
-                    JOIN Album al ON al.AlbumId = t.AlbumId
-                    JOIN Artist a ON a.ArtistId = al.ArtistId
-                    WHERE g.Name = %s"""
+        query = """SELECT DISTINCT (a.Title) as album
+                    from Album a 
+                    join Track t on t.AlbumId = a.AlbumId 
+                    JOIN InvoiceLine il on il.TrackId = t.TrackId 
+                    join Invoice i on i.InvoiceId = il.InvoiceId 
+                    JOIN Customer c on c.CustomerId = i.CustomerId 
+                    WHERE  c.Country = %s"""
 
-        cursor.execute(query, (genere,))
+        cursor.execute(query, (paese,))
 
         for row in cursor:
-            result.append(row["nomiArtisti"])
+            result.append(row["album"])
 
         cursor.close()
         conn.close()
         return result
 
     @staticmethod
-    def getClienti(artista, genere):
+    def getClienti(album, paese):
         conn = DBConnect.get_connection()
 
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """SELECT DISTINCT i.CustomerId as cliente
-                    FROM Artist a 
-                    JOIN Album al on al.ArtistId = a.ArtistId 
-                    join Track t on t.AlbumId = al.AlbumId 
-                    join InvoiceLine il on il.TrackId = t.TrackId 
-                    join Invoice i on i.InvoiceId = il.InvoiceId 
-                    join Genre g on g.GenreId = t.GenreId 
-                    WHERE a.Name  = %s 
-                    and g.Name = %s"""
+        query = """SELECT DISTINCT (c.CustomerId) cliente
+                    from Customer c 
+                    JOIN Invoice i on i.CustomerId = c.CustomerId 
+                    join InvoiceLine il on il.InvoiceId = i.InvoiceId 
+                    join Track t on t.TrackId = il.TrackId 
+                    join Album a on a.AlbumId = t.AlbumId 
+                    WHERE  a.Title = %s and c.Country = %s"""
 
-        cursor.execute(query, (artista, genere))
+        cursor.execute(query, (album, paese))
 
         for row in cursor:
             result.append(row["cliente"])
@@ -71,22 +70,18 @@ class DAO():
         return result
 
     @staticmethod
-    def getNumeroTracce(artista, genere):
+    def getNumeroTracce(album):
         conn = DBConnect.get_connection()
 
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """SELECT  COUNT( t.TrackId) as numeroTracce
-                    FROM Artist a
-                    JOIN Album al on al.ArtistId = a.ArtistId
-                    join Track t on t.AlbumId = al.AlbumId
-                    join InvoiceLine il on il.TrackId = t.TrackId
-                    join Genre g on g.GenreId = t.GenreId
-                    WHERE a.Name  = %s
-                    and g.Name = %s"""
+        query = """select COUNT(t.Name) as numeroTracce 
+                    from Track t 
+                    join Album a on a.AlbumId = t.AlbumId 
+                    where a.Title = %s"""
 
-        cursor.execute(query, (artista, genere))
+        cursor.execute(query, (album, ))
 
         for row in cursor:
             result.append(row["numeroTracce"])

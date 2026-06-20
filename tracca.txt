@@ -8,7 +8,6 @@ Costruzione: Crea un grafo NON orientato e pesato.
 Output: Dopo la creazione, visualizza:
 -	Numero di vertici e numero di archi.
 -	I 5 archi con il peso maggiore.
--	La densità del grafo (definita come rapporto tra numero di archi e numero massimo possibile di archi tra i vertici presenti).
 Esercizio 2: Analisi dei Percorsi
 Utilizzando il grafo costruito nell'Esercizio 1:
 -  Analisi: Seleziona due album (nodo di partenza e nodo di arrivo) tra quelli presenti nel grafo.
