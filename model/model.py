@@ -22,8 +22,8 @@ class Model:
             return self.getCammino(nodoDaAggiungere)
         else:
             return self._migliorCammino
-    def getGeneri (self):
-        return DAO.getGeneri()
+    def getPaese (self):
+        return DAO.getPaese()
 
     def getArtisti (self, genere):
         return DAO.getArtisti(genere)

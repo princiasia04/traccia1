@@ -3,20 +3,19 @@ from database.DB_connect import DBConnect
 
 class DAO():
     @staticmethod
-    def getGeneri():
+    def getPaese():
         conn = DBConnect.get_connection()
 
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """SELECT g.Name as nomiGeneri
-                    from Genre g 
-                    """
+        query = """SELECT DISTINCT (c.Country) as paesi
+                    from Customer c """
 
         cursor.execute(query)
 
         for row in cursor:
-            result.append(row["nomiGeneri"])
+            result.append(row["paesi"])
 
         cursor.close()
         conn.close()

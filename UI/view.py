@@ -24,8 +24,8 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
 
-        self._ddAnno = ft.Dropdown(label="Anno", width=250, on_change=self._controller.handleAnnoSelection)
-        self._controller.fillDDAnno()
+        self._ddPaese = ft.Dropdown(label="Anno", width=250, on_change=self._controller.handlePaeseSelection)
+        self._controller.fillDDPaese()
         self._btnCreaGrafo = ft.ElevatedButton(text="Crea Grafo",
                                                on_click=self._controller.handleCreaGrafo, width=250)
 
