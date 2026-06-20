@@ -36,3 +36,10 @@ class Model:
             reverse=True
         )[:5]
         return Primi5
+
+    def getListaAlbum(self, paese):
+        return DAO.getAlbum(paese)
+
+    def getCammino(self, NPartenza, NArrivo):
+        cammino = nx.dijkstra_path(self._grafo, NPartenza, NArrivo, weight="weight")
+        return cammino

@@ -24,7 +24,7 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
 
-        self._ddPaese = ft.Dropdown(label="Paese", width=250, on_change=self._controller.handlePaeseSelection)
+        self._ddPaese = ft.Dropdown(label="Paese", width=250, on_change=self._controller.handleAlbumSelection)
         self._controller.fillDDPaese()
         self._btnCreaGrafo = ft.ElevatedButton(text="Crea Grafo",
                                                on_click=self._controller.handleCreaGrafo, width=250)
@@ -33,7 +33,7 @@ class View(ft.UserControl):
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 
-        self._ddAlbum1 = ft.Dropdown(label="Artist", width=250)
+        self._ddAlbum1 = ft.Dropdown(label="Album", width=250)
         self._ddAlbum2 = ft.Dropdown(label="Album", width=250)
         self._btntrovaCammino = ft.ElevatedButton(text="Trova Cammino", on_click=self._controller.handleCammino, width=250)
 
