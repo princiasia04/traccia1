@@ -8,7 +8,7 @@ class Controller:
         # the model, which implements the logic of the program and holds the data
         self._model = model
 
-    def fillDDGenre(self):
+    def fillDDAnno(self):
         #chiamo funzione nel model
         generi = self._model.getGeneri()
         generiDD = list(map(lambda x: ft.dropdown.Option(x), generi))
@@ -31,7 +31,7 @@ class Controller:
             self._view.txt_result.controls.append(ft.Text(f"{u}, {v}, {data['weight']}", color="green"))
         self._view.update_page()
 
-    def handleGenreSelection(self, e):
+    def handleAnnoSelection(self, e):
         self.fillDDArtist()
 
     def fillDDArtist(self):
